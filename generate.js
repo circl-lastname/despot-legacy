@@ -37,7 +37,7 @@ for (let file of metadata) {
     output[artist][album] = [];
   }
   
-  const trackNumber = file.TrackNumber ? parseInt(file.TrackNumber)-1 : output[artist][album].length;
+  const trackNumber = file.TrackNumber ? parseInt(file.TrackNumber)-1 : (file.Track ? parseInt(file.Track)-1 : output[artist][album].length);
   
   let picturePath = "";
   
