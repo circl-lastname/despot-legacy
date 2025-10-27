@@ -50,7 +50,7 @@ for (let file of metadata) {
     if (picture) {
       const hash = createHash("md5");
       hash.update(picture);
-      picturePath = `pictures/${hash.digest("hex")}`;
+      picturePath = `pictures/${hash.digest("hex")}.${file.PictureMIMEType.split("/")[1]}`;
       
       if (!existsSync(picturePath)) {
         writeFileSync(picturePath, picture);
