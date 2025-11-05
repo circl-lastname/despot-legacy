@@ -37,7 +37,7 @@ for (let file of metadata) {
     continue;
   }
   
-  const artist = file.Artist ? file.Artist : "Unknown Artist";
+  const artist = file.Band ? file.Band : (file.Artist ? file.Artist : "Unknown Artist");
   const album = file.Album ? file.Album : file.FileName;
   const title = file.Title ? file.Title : file.FileName;
   
@@ -49,7 +49,7 @@ for (let file of metadata) {
     output[artist][album] = [];
   }
   
-  let trackNumber = file.TrackNumber ? parseInt(file.TrackNumber)-1 : (file.Track ? parseInt(file.Track)-1 : output[artist][album].length);
+  let trackNumber;
   
   if (file.TrackNumber) {
     trackNumber = parseInt(file.TrackNumber)-1;
