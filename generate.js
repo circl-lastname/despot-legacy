@@ -37,7 +37,7 @@ for (let file of metadata) {
     continue;
   }
   
-  const artist = file.Band ? file.Band : (file.Artist ? file.Artist : "Unknown Artist");
+  const artist = file.Band ? file.Band : (file.Albumartist ? file.Albumartist : (file.Artist ? file.Artist : "Unknown Artist"));
   const album = file.Album ? file.Album : file.FileName;
   const title = file.Title ? file.Title : file.FileName;
   
