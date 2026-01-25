@@ -11,7 +11,7 @@ chdir(__dirname);
 
 let metadata;
 try {
-  metadata = JSON.parse(execFileSync("exiftool", [ "-r", "-j", "music" ], { encoding: "utf-8" }));
+  metadata = JSON.parse(execFileSync("exiftool", [ "-r", "-j", "music" ], { encoding: "utf-8", maxBuffer: 64 * 1024 * 1024 }));
 } catch (err) {
   try {
     metadata = JSON.parse(err.stdout);
