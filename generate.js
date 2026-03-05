@@ -67,7 +67,7 @@ for (let file of metadata) {
   if (oldOutput[artist]?.[album]?.[trackNumber]?.title === title) {
     picturePath = oldOutput[artist][album][trackNumber].picture;
   } else {
-    let picture = file.Picture ? execFileSync("exiftool", [ "-b", "-picture", file.SourceFile ]) : null;
+    let picture = file.Picture ? execFileSync("exiftool", [ "-b", "-picture", file.SourceFile ], { maxBuffer: 64 * 1024 * 1024 }) : null;
     
     if (picture) {
       const hash = createHash("md5");
