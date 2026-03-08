@@ -50,11 +50,12 @@ for (let file of metadata) {
   }
   
   let trackNumber;
+  let discNumber = file.PartOfSet ? parseInt(file.PartOfSet) : (file.Discnumber ? parseInt(file.Discnumber) : 0);
   
   if (file.TrackNumber) {
-    trackNumber = parseInt(file.TrackNumber)-1;
+    trackNumber = parseInt(file.TrackNumber)-1 + discNumber*1000;
   } else if (file.Track) {
-    trackNumber = parseInt(file.Track)-1;
+    trackNumber = parseInt(file.Track)-1 + discNumber*1000;
   } else {
     console.log(`File ${file.SourceFile} has no track number, please edit the metadata`);
     noTrackNumber += `${file.SourceFile}\n`;
